@@ -72,7 +72,8 @@ descargar resultados. Y dos avisos que hay que tomarse en serio:
   falla, se pierde todo.
 
 Por tanto: no dejéis en la DGX nada que no tengáis también en otro sitio. El código va a
-vuestro repositorio de GitHub (haced `git push` a menudo). Los adaptadores LoRA pesan poco:
+vuestro repositorio de GitHub (haced `git push` a menudo; cómo configurarlo desde la DGX está
+en [`docs/github.md`](github.md)). Los adaptadores LoRA pesan poco:
 subidlos a Hugging Face Hub (`huggingface-cli upload`) o descargadlos al terminar cada
 entrenamiento. Los datasets y el corpus, en el repositorio o con un script que los regenere.
 La caché de modelos de Hugging Face (con `dgx_env.sh`, en `clusters/dgx/.hf_cache`) se puede
@@ -84,7 +85,10 @@ espacio por usuario; hasta entonces, sed responsables.
 Desde una sesión de code-server con GPU, en la terminal (que ya se abre dentro de
 `clusters/dgx`):
 
-1. **Clonad el repositorio** (o `git pull` si ya lo tenéis):
+1. **Clonad vuestro repositorio** (o `git pull` si ya lo tenéis). Para la prueba de la
+   primera sesión vale el de la plantilla; para trabajar, el vuestro, creado con
+   *Use this template* (ver [`docs/github.md`](github.md), que también explica cómo hacer
+   `push` desde la DGX):
 
    ```bash
    cd ~/clusters/dgx

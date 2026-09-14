@@ -69,7 +69,7 @@ memoria externa. Y al final lo ponemos a trabajar solo, usando todo lo anterior:
 reutilizaréis el modelo de la fase 1, las herramientas de la fase 2 y el retriever de la fase 3.
 
 En [`docs/`](docs/) tenéis la plantilla de la propuesta, la rúbrica detallada, la guía de la
-DGX, la plantilla del informe y la del cuaderno de experimentos.
+DGX, la de GitHub, la plantilla del informe y la del cuaderno de experimentos.
 
 ---
 
@@ -77,7 +77,9 @@ DGX, la plantilla del informe y la del cuaderno de experimentos.
 
 Este repositorio es una plantilla. Pulsad **Use this template** en GitHub para crear vuestro
 propio repositorio con una copia limpia (mejor que un fork: será vuestro, sin historial
-ajeno, y es el que enseñaréis como portfolio). Después clonad el vuestro.
+ajeno, y es el que enseñaréis como portfolio). Después clonad el vuestro. Si no tenéis cuenta
+de GitHub, o no sabéis cómo hacer `push` desde la DGX, está explicado paso a paso en
+[`docs/github.md`](docs/github.md).
 
 Necesitáis Python 3.11 y [`uv`](https://docs.astral.sh/uv/). Con eso:
 

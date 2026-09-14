@@ -20,6 +20,9 @@ export UV_INSTALL_DIR="$WORK_DIR/.uv/bin"
 export UV_CACHE_DIR="$WORK_DIR/.uv/cache"
 export UV_PYTHON_INSTALL_DIR="$WORK_DIR/.uv/python"
 export HF_HOME="$WORK_DIR/.hf_cache"
+# La configuración global de git (identidad, credenciales) también dentro del espacio persistente.
+export GIT_CONFIG_GLOBAL="$WORK_DIR/.gitconfig"
+touch "$GIT_CONFIG_GLOBAL"
 export TOKENIZERS_PARALLELISM=false
 mkdir -p "$UV_INSTALL_DIR" "$UV_CACHE_DIR" "$UV_PYTHON_INSTALL_DIR" "$HF_HOME"
 export PATH="$UV_INSTALL_DIR:$PATH"
@@ -35,4 +38,5 @@ fi
 
 echo "uv:        $(uv --version 2>/dev/null || echo 'no disponible')"
 echo "HF_HOME:   $HF_HOME"
+echo "git:       $(git config --global user.name 2>/dev/null || echo 'sin identidad; ver docs/github.md')"
 echo "GPU:       $(nvidia-smi --query-gpu=name,memory.total --format=csv,noheader 2>/dev/null || echo 'ninguna visible')"
