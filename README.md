@@ -75,6 +75,10 @@ DGX, la plantilla del informe y la del cuaderno de experimentos.
 
 ## Empezar
 
+Este repositorio es una plantilla. Pulsad **Use this template** en GitHub para crear vuestro
+propio repositorio con una copia limpia (mejor que un fork: será vuestro, sin historial
+ajeno, y es el que enseñaréis como portfolio). Después clonad el vuestro.
+
 Necesitáis Python 3.11 y [`uv`](https://docs.astral.sh/uv/). Con eso:
 
 ```bash

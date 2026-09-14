@@ -10,7 +10,7 @@ recibe una GPU de 16 GB** durante un máximo de 24 horas; y **no hay copias de s
 Todo el acceso es vía web, a través del portal **Open OnDemand** de Comillas:
 [https://hpc.comillas.edu](https://hpc.comillas.edu). La guía oficial del portal, con
 capturas, está en [hpc.comillas.edu/public/docs/guia-hpc-comillas.html](https://hpc.comillas.edu/public/docs/guia-hpc-comillas.html)
-(hay una copia en esta carpeta). Resumido:
+Resumido:
 
 1. Entráis en el portal con vuestra cuenta de Comillas (Microsoft, la misma del correo).
 2. En **Interactive Apps** elegís **code-server → DGX** (o **Jupyter → DGX**) y rellenáis el
