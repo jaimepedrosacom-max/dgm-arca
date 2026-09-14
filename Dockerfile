@@ -1,4 +1,5 @@
-# ARCA · imagen única para entrenar (fase 1) y servir la API (todas las fases).
+# ARCA · imagen única para servir la API (todas las fases) y, si tenéis una máquina con GPU y
+# Docker, también para entrenar. En las sesiones de la DGX no hay Docker: ver docs/dgx.md.
 #
 # La imagen base solo aporta las librerías mínimas de CUDA: las ruedas de torch para
 # Linux que fija uv.lock (índice cu128) ya incluyen su propio runtime de CUDA. Lo único

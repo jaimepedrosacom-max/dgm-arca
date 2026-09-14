@@ -80,7 +80,7 @@ def train(args: argparse.Namespace) -> None:
         train_dataset=dataset,
         peft_config=peft_config,
     )
-    trainer.train()
+    trainer.train(resume_from_checkpoint=args.resume_from_checkpoint)
     trainer.save_model(args.output)
     print(f"adapter saved to {args.output}")
 
@@ -100,6 +100,7 @@ def main() -> None:
     parser.add_argument("--grad-accum", type=int, default=4)
     parser.add_argument("--max-length", type=int, default=2048)
     parser.add_argument("--lora-rank", type=int, default=16)
+    parser.add_argument("--resume-from-checkpoint", default=None, help="checkpoint-XXX folder")
     train(parser.parse_args())
 
 

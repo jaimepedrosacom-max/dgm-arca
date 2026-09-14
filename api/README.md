@@ -40,7 +40,9 @@ saber a quién estoy corrigiendo.
 ## Para la entrega
 
 La API tiene que levantar con `docker compose up api` en una máquina limpia, con los modelos
-cargándose al arrancar o en la primera petición. Para la corrección la expondréis con
+cargándose al arrancar o en la primera petición. Lo normal es entrenar en la DGX, descargar el
+adaptador (pesa poco) y servir la API desde vuestro portátil o una máquina en la nube; dentro
+de la DGX no hay Docker ni puertos públicos. Para la corrección la expondréis con
 [ngrok](https://ngrok.com/) (`ngrok http 8000`) y me pasaréis la URL. Antes de pasármela,
 probad vosotros mismos los cuatro endpoints desde `/docs` y comprobad que `/health` los
 marca como `ready`.

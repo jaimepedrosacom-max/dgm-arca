@@ -87,17 +87,19 @@ uv run arca-smoke                                 # entrenamiento GRPO de prueba
 uv run arca-api                                   # API en http://localhost:8000/docs
 ```
 
-Con Docker (es lo que usaremos en la DGX):
+En la DGX se trabaja exactamente así, con `uv`, desde la terminal de Code Server: no hay
+SSH ni Docker dentro de las sesiones, cada uno recibe una GPU de 16 GB y las sesiones duran
+como máximo 24 horas. La guía completa, incluida la prueba de la primera sesión, está en
+[`docs/dgx.md`](docs/dgx.md). Leedla antes de conectaros.
+
+Docker es para lo otro: que la API se despliegue con una orden en cualquier máquina, para la
+corrección y para vuestro portfolio.
 
 ```bash
 docker compose build
 docker compose run --rm check-gpu
-docker compose run --rm smoke
 docker compose up api
 ```
-
-La guía completa de la DGX, incluida la prueba de la primera sesión, está en
-[`docs/dgx.md`](docs/dgx.md).
 
 Las dependencias están separadas en grupos para que instaléis solo lo que necesitéis:
 `train` (torch, transformers, trl, peft), `rag` (sentence-transformers, chromadb, bm25),
@@ -172,7 +174,8 @@ Cuando terminéis tendréis un sistema completo. Tratadlo como lo que es: algo q
 - Ninguna clave ni token en el código. Usad `.env` (ya está en `.gitignore`).
 - Usad los agentes de código todo lo que queráis, pero leed lo que os escriben. En la
   defensa el código es vuestro y las preguntas también.
-- La DGX es de todos. Cómo repartirse las GPUs está en [`docs/dgx.md`](docs/dgx.md).
+- La DGX no tiene copias de seguridad. Nada que no esté también en GitHub, en Hugging Face
+  Hub o en vuestro disco existe de verdad. Detalles en [`docs/dgx.md`](docs/dgx.md).
 
 ---
 

@@ -33,10 +33,11 @@ fase 1: el prompt de sistema de R1-Zero, las recompensas de formato y exactitud 
    respuesta del modelo base y la del modelo entrenado, lado a lado.
 
 ```bash
-uv run arca-smoke                                      # 10-15 min en una GPU moderna
-uv run arca-smoke --steps 80 --num-generations 16      # más largo, más claro
-docker compose run --rm smoke                          # lo mismo, dentro del contenedor
+uv run arca-smoke                                      # 10-15 min en la GPU de 16 GB de la DGX
+uv run arca-smoke --num-generations 4                  # si la memoria se queda justa
+uv run arca-smoke --steps 80 --num-generations 16      # más largo, más claro (GPU grande)
 uv run arca-smoke --dry-run                            # sin GPU: modelo diminuto, 2 pasos, CPU
+docker compose run --rm smoke                          # en una máquina con Docker y GPU
 ```
 
 ## Qué deberíais ver
@@ -49,9 +50,11 @@ no esperéis milagros: lo que queremos ver es que *se mueve*, y que la longitud 
 respuestas cambia a medida que el modelo aprende a cerrar la etiqueta antes de que se le
 acabe el presupuesto de tokens.
 
-Si veis eso, el entorno funciona y podéis empezar la fase 1 con tranquilidad. Si la memoria
-se dispara, bajad `--num-generations` o `--max-completion-length`. Si no ve la GPU, volved a
-`check_gpu.py` y a la sección de problemas de [`docs/dgx.md`](../docs/dgx.md).
+Si veis eso, el entorno funciona y podéis empezar la fase 1 con tranquilidad. Con la
+partición de 16 GB de la DGX, la configuración por defecto (0.6B, 8 generaciones, 384
+tokens) debería caber; si la memoria se dispara, bajad `--num-generations` o
+`--max-completion-length`. Si no ve la GPU, volved a `check_gpu.py` y a la sección de
+problemas de [`docs/dgx.md`](../docs/dgx.md).
 
 ## Qué no es
 

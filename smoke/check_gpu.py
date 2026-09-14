@@ -98,8 +98,9 @@ def main() -> int:
         device = "mps" if torch.backends.mps.is_available() else "cpu"
         console.print(
             f"[yellow]No CUDA device visible to torch. Falling back to {device}.[/yellow]\n"
-            "On the DGX this usually means: the container was started without --gpus, "
-            "CUDA_VISIBLE_DEVICES is empty, or the driver is older than the CUDA build of torch."
+            "On the DGX this usually means the SLURM session was launched without a GPU: "
+            "check the resources you requested in the Open OnDemand portal. In Docker, check "
+            "--gpus / the compose GPU reservation and the driver version."
         )
         tflops = benchmark(device, size=1024, repeats=5)
         console.print(f"{device} matmul: {tflops:.2f} TFLOP/s (just to prove the install works)")

@@ -59,6 +59,11 @@ concretos: ¿por qué se equivoca el modelo ahí?
 pensamiento de respuesta. Solo tenéis que apuntar `ARCA_RLM_ADAPTER` a vuestro adaptador
 final y registrar vuestro verificador en `VERIFIERS`.
 
+Una nota sobre recursos: en la DGX tenéis una GPU de 16 GB y sesiones de 24 horas. Modelos de
+0.6B a 1.7B con LoRA caben bien; guardad checkpoints (`--save-steps`) y reanudad con
+`--resume-from-checkpoint` si la sesión se acaba. Y subid cada adaptador terminado a
+Hugging Face Hub o descargadlo: la DGX no tiene copias de seguridad.
+
 ## Para ir más allá
 
 Aquí es donde se marca la diferencia en la nota de interpretación. Algunas direcciones:

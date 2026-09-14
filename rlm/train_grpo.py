@@ -108,7 +108,7 @@ def train(args: argparse.Namespace) -> None:
         train_dataset=dataset,
         peft_config=peft_config,
     )
-    trainer.train()
+    trainer.train(resume_from_checkpoint=args.resume_from_checkpoint)
     trainer.save_model(args.output)
     print(f"final adapter saved to {args.output}")
 
@@ -131,6 +131,11 @@ def main() -> None:
     parser.add_argument("--lora-rank", type=int, default=16)
     parser.add_argument("--n-examples", type=int, default=None)
     parser.add_argument("--save-steps", type=int, default=50)
+    parser.add_argument(
+        "--resume-from-checkpoint",
+        default=None,
+        help="path to a checkpoint-XXX folder to continue an interrupted run (24h sessions!)",
+    )
     parser.add_argument("--seed", type=int, default=0)
     train(parser.parse_args())
 
