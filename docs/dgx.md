@@ -8,16 +8,30 @@ recibe una GPU de 16 GB** durante un máximo de 24 horas; y **no hay copias de s
 ## Cómo se accede
 
 Todo el acceso es vía web, a través del portal **Open OnDemand** de Comillas:
+[https://hpc.comillas.edu](https://hpc.comillas.edu). La guía oficial del portal, con
+capturas, está en [hpc.comillas.edu/public/docs/guia-hpc-comillas.html](https://hpc.comillas.edu/public/docs/guia-hpc-comillas.html)
+(hay una copia en esta carpeta). Resumido:
 
-1. Entráis en el portal con vuestras credenciales.
-2. Elegís la aplicación y los recursos que necesitáis.
-3. SLURM prepara vuestra sesión en la DGX.
-4. Trabajáis desde **JupyterHub** o desde **Code Server**.
+1. Entráis en el portal con vuestra cuenta de Comillas (Microsoft, la misma del correo).
+2. En **Interactive Apps** elegís **code-server → DGX** (o **Jupyter → DGX**) y rellenáis el
+   formulario: instancias de GPU (1 = 16 GiB), duración de la sesión y QoS (viene fijado según
+   vuestro perfil, se deja como está). Pulsáis **Launch**.
+3. SLURM pone la sesión en cola (**Queued**, tarjeta azul) y en unos segundos pasa a
+   **Running** (tarjeta verde) con el botón para abrirla. No recarguéis ni volváis a pulsar Launch.
+4. Trabajáis desde **code-server** o desde **JupyterLab**, en una pestaña nueva.
+5. Al terminar, volvéis a **My Interactive Sessions** y pulsáis **Delete**: cerrar la pestaña
+   no libera la GPU, borrar la sesión sí.
 
-Code Server es prácticamente Visual Studio Code en el navegador, con terminal integrada. Es
-lo que os recomiendo para esta práctica: vais a trabajar con un repositorio, no con un
-notebook. JupyterHub sirve igual si preferís lanzar cosas desde celdas, pero el flujo de
-abajo está pensado para la terminal de Code Server.
+code-server es Visual Studio Code en el navegador (en realidad Code-OSS, con extensiones de
+Open VSX), con terminal integrada. Es lo que os recomiendo para esta práctica: vais a trabajar
+con un repositorio, no con un notebook. Jupyter sirve igual si preferís celdas; el flujo de
+abajo está pensado para la terminal de code-server.
+
+**Vuestra carpeta de trabajo es `/home/<usuario>/clusters/dgx`.** Es el único sitio que se
+conserva de una sesión a la siguiente. Cualquier otra cosa que cuelgue de vuestro `/home`
+fuera de esa carpeta no está garantizado que sobreviva. Clonad el repositorio ahí, y usad el
+script `smoke/dgx_env.sh` (abajo) para que también las cachés de `uv` y de Hugging Face vivan
+ahí; si no, volveréis a descargar varios gigas en cada sesión.
 
 Las imágenes base traen las librerías del curso pasado. Lo que necesitemos de más lo
 instalamos en nuestro espacio con `uv`, sin pedir permiso a nadie. Si algo os parece de uso
@@ -25,8 +39,9 @@ general, se puede pedir al equipo del clúster que lo incorpore a la imagen.
 
 ## La GPU: una partición de 16 GB
 
-Las GPU físicas de la DGX están particionadas. De forma estándar cada sesión recibe **una
-GPU de 16 GB** que, desde vuestro código, aparece como una GPU normal (`cuda:0`). SLURM se
+Las GPU físicas de la DGX (H200) están particionadas con MIG en siete instancias de 16 GiB
+cada una. De forma estándar cada sesión recibe **una instancia de 16 GB** que, desde vuestro
+código, aparece como una GPU normal (`cuda:0`). SLURM se
 encarga de asignarla: no toquéis `CUDA_VISIBLE_DEVICES`, ya viene puesta.
 
 Con 16 GB se hace toda la práctica si elegís bien los tamaños: los modelos de 0.6B a 1.7B
@@ -60,26 +75,28 @@ Por tanto: no dejéis en la DGX nada que no tengáis también en otro sitio. El 
 vuestro repositorio de GitHub (haced `git push` a menudo). Los adaptadores LoRA pesan poco:
 subidlos a Hugging Face Hub (`huggingface-cli upload`) o descargadlos al terminar cada
 entrenamiento. Los datasets y el corpus, en el repositorio o con un script que los regenere.
-La caché de modelos de Hugging Face (`~/.cache/huggingface`) se puede borrar y regenerar sin
-problema, pero ocupa: limpiadla cuando terminéis una fase. Más adelante habrá límites de
+La caché de modelos de Hugging Face (con `dgx_env.sh`, en `clusters/dgx/.hf_cache`) se puede
+borrar y regenerar sin problema, pero ocupa: limpiadla cuando terminéis una fase. Más adelante habrá límites de
 espacio por usuario; hasta entonces, sed responsables.
 
 ## La prueba de la primera sesión, paso a paso
 
-Desde una sesión de Code Server con GPU, en la terminal:
+Desde una sesión de code-server con GPU, en la terminal (que ya se abre dentro de
+`clusters/dgx`):
 
-1. **Instalad `uv`** en vuestro espacio (solo la primera vez):
-
-   ```bash
-   curl -LsSf https://astral.sh/uv/install.sh | sh
-   source ~/.local/bin/env
-   ```
-
-2. **Clonad el repositorio** (o `git pull` si ya lo tenéis):
+1. **Clonad el repositorio** (o `git pull` si ya lo tenéis):
 
    ```bash
+   cd ~/clusters/dgx
    git clone https://github.com/kendrickcetina/dgm-arca.git
    cd dgm-arca
+   ```
+
+2. **Preparad el entorno de la sesión.** Esto hay que hacerlo al principio de **cada**
+   sesión: coloca las cachés dentro de vuestra carpeta de trabajo e instala `uv` ahí si falta.
+
+   ```bash
+   source smoke/dgx_env.sh
    ```
 
 3. **Instalad el entorno.** `uv` crea `.venv` dentro del proyecto con Python 3.11 y todas
@@ -172,12 +189,17 @@ Reanudad con `--resume-from-checkpoint`. Si no guardasteis ninguno, la lección 
 **Descargas lentas o límite de peticiones a Hugging Face.** Poned vuestro `HF_TOKEN` en
 `.env` (es gratis).
 
-**Se ha llenado el disco.** Borrad `~/.cache/huggingface/hub` de los modelos que ya no uséis
+**Se ha llenado el disco.** Borrad de `clusters/dgx/.hf_cache/hub` los modelos que ya no uséis
 y los checkpoints intermedios que ya tengáis replicados. Recordad que nada de la DGX tiene copia.
 
 **Código del curso pasado que no funciona.** Han cambiado el sistema, el firmware, los
 drivers y el entorno de software. Si vuestro código estaba preparado para varias GPU, ahora
 tiene que trabajar con la que SLURM le asigne.
 
+**`uv` o los modelos han desaparecido al abrir una sesión nueva.** Estaban fuera de
+`clusters/dgx`. Haced `source smoke/dgx_env.sh` al principio de cada sesión y volverán a
+instalarse en el sitio correcto.
+
 **Cualquier otra cosa.** Copiad el error completo, el comando exacto y la salida de
-`check_gpu.py`, y traedlo a clase o al canal de la asignatura.
+`check_gpu.py`, y traedlo a clase o al canal de la asignatura. Para incidencias del propio
+clúster (acceso, portal, cuotas) el contacto es gestion_cluster@comillas.edu.
