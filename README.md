@@ -23,6 +23,9 @@ calcula impuestos y recuerda plazos, un entrenador de programación competitiva 
 vuestras soluciones. Lo que queráis, con una condición: que resuelva un problema a alguien
 de verdad, aunque ese alguien seáis vosotros. Si al terminar podéis poner el enlace en
 vuestro currículum y enseñárselo a alguien en una entrevista, habréis hecho bien el trabajo.
+En [`docs/temas_ejemplo.md`](docs/temas_ejemplo.md) hay una docena de temas desarrollados, de
+farmacia a marketing, con cómo se corregiría cada uno. Son para inspirar, no para elegir de
+una lista.
 
 ¿Por qué lo planteo así? Porque sé que vais a programar con ayuda de agentes de código, y
 no os lo voy a prohibir. Precisamente por eso, lo que vale aquí no es escribir código: es

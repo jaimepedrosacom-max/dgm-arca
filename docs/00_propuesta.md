@@ -5,6 +5,9 @@ No es burocracia: es la parte más difícil de la práctica y la que más va a d
 vuestra nota. Un buen tema bien pensado hace que todo lo demás fluya; uno mal elegido os va a
 dar problemas en cada fase.
 
+Si no tenéis tema, en [`temas_ejemplo.md`](temas_ejemplo.md) hay una docena desarrollados con
+su tarea verificable, sus herramientas y su corpus, y cómo se corregiría cada uno.
+
 Rellenad esta plantilla, guardadla como `docs/propuesta.md` en vuestro repositorio y
 enviadme el enlace. Hasta que os diga que está aprobada, no empecéis la fase 1: os ahorraréis
 trabajo tirado. Cuando la apruebe, os devolveré por escrito qué se va a evaluar exactamente en
