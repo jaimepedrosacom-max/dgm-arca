@@ -5,6 +5,10 @@ ambición espero, cómo se traduce un tema en las cuatro fases, y cómo concreto
 cuando sé de qué va vuestro proyecto. Si os inspira alguno, adelante, pero cambiadlo hasta
 que sea vuestro. Si tenéis otro, mejor: traedlo a la propuesta.
 
+Cada tema indica de dónde salen los problemas de la fase 1, porque es la pregunta que más me
+hacéis. Ninguno se resuelve anotando a mano: las seis estrategias están en
+[`datasets.md`](datasets.md).
+
 Todos comparten la misma estructura, porque es la que tiene que tener vuestra propuesta:
 un usuario con un problema, una **tarea verificable** para la fase 1, **tres herramientas**
 para la fase 2, un **corpus** para la fase 3, y **tareas encadenadas** para la fase 4. Y

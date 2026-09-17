@@ -20,7 +20,10 @@ a hacer aquí, sobre GSM8K, y entenderlo os ahorra la mitad del trabajo.
 **1. El dataset verificable.** Unos cientos de problemas de vuestro dominio en
 `rlm/data/train.jsonl` y `rlm/data/test.jsonl` (formato en `rlm/data/README.md`), y un
 verificador en `rlm/verifier.py` que, dada una respuesta del modelo, diga si es correcta sin
-que intervenga nadie. Os doy el numérico y el de texto exacto; el vuestro puede ejecutar
+que intervenga nadie. **Nadie anota esto a mano**: en [`docs/datasets.md`](../docs/datasets.md)
+tenéis las seis formas de construirlo y cuántos problemas hacen falta de verdad, y en
+[`generate_problems.py`](generate_problems.py) un generador completo y ejecutable donde la
+implementación de referencia es a la vez el verificador. Os doy el numérico y el de texto exacto; el vuestro puede ejecutar
 tests, comparar el resultado de una consulta, validar un esquema, lo que necesite vuestro
 problema. Añadid tests en `tests/test_verifier.py` con los casos raros: es donde los
 verificadores fallan y donde el modelo aprenderá a haceros trampas si le dejáis. Podéis

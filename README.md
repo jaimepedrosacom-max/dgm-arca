@@ -71,8 +71,9 @@ El orden no es casual. Primero enseñamos al modelo a pensar. Luego le damos man
 memoria externa. Y al final lo ponemos a trabajar solo, usando todo lo anterior: en la fase 4
 reutilizaréis el modelo de la fase 1, las herramientas de la fase 2 y el retriever de la fase 3.
 
-En [`docs/`](docs/) tenéis la plantilla de la propuesta, la rúbrica detallada, la guía de la
-DGX, la de GitHub, la plantilla del informe y la del cuaderno de experimentos.
+En [`docs/`](docs/) tenéis la plantilla de la propuesta, los temas de ejemplo, la guía para
+construir el dataset de la fase 1, la rúbrica detallada, la guía de la DGX, la de GitHub, la
+plantilla del informe y la del cuaderno de experimentos.
 
 ---
 

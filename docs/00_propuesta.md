@@ -52,8 +52,10 @@ consulta que devuelve un resultado, una etiqueta. Describid:
 
 - El tipo de problema y dos ejemplos con su respuesta.
 - Cómo lo verificaríais con código: comparar números, ejecutar tests, comparar conjuntos...
-- De dónde saldrían unos cientos de problemas con respuesta: un dataset existente, un
-  generador, anotación propia.
+- **Con cuál de las seis estrategias de [`datasets.md`](datasets.md) vais a construir el
+  conjunto**, y cuántos problemas esperáis conseguir. Si es un generador, qué parámetros
+  muestreáis; si es minería de datos, la fuente y una fila de ejemplo; si es un benchmark
+  público, cuál y qué añadís de vuestra cosecha. Esta es la parte donde más os voy a apretar.
 
 Dedicadle tiempo a esta sección. Si no encontráis respuesta, el tema no sirve tal como está
 y hay que darle una vuelta. Venid a hablarlo.
