@@ -38,6 +38,12 @@ smoke-dry: ## Prueba de instalación en CPU con un modelo diminuto (~1 min)
 api: ## Levanta la API en local con recarga automática
 	$(UV) run uvicorn api.app:app --host 0.0.0.0 --port 8000 --reload
 
+enunciado: ## Recompila docs/enunciado.pdf a partir del .tex
+	cd docs && pdflatex -interaction=nonstopmode enunciado.tex >/dev/null
+	cd docs && pdflatex -interaction=nonstopmode enunciado.tex >/dev/null
+	cd docs && rm -f enunciado.aux enunciado.log enunciado.out
+	@echo "docs/enunciado.pdf actualizado"
+
 build: ## Construye la imagen Docker
 	docker compose build
 
@@ -53,4 +59,4 @@ docker-api: ## API dentro del contenedor
 shell: ## Shell interactiva con GPU dentro del contenedor
 	docker compose run --rm train
 
-.PHONY: help setup setup-min lock test lint format check-gpu smoke smoke-dry api build docker-check-gpu docker-smoke docker-api shell
+.PHONY: help setup setup-min lock test lint format check-gpu smoke smoke-dry api enunciado build docker-check-gpu docker-smoke docker-api shell

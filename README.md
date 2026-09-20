@@ -13,6 +13,9 @@ intencionada: vais a montar vuestra propia arca con lo que decidáis meter dentr
 
 ---
 
+> **El enunciado en PDF está en [`docs/enunciado.pdf`](docs/enunciado.pdf)** (5 páginas). Es el
+> resumen de todo esto; el detalle de cada fase está en el README de su carpeta.
+
 ## La idea: vosotros elegís el tema
 
 No os voy a dar un dominio cerrado. Cada equipo escoge un problema real que le interese y
