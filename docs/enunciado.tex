@@ -39,7 +39,7 @@
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\headrule}{\hbox to\headwidth{\color{arcarule}\leaders\hrule height \headrulewidth\hfill}}
 \fancyhead[L]{\footnotesize\color{arcagrey}Modelos Generativos Profundos · MIA · ICAI}
-\fancyhead[R]{\footnotesize\color{arcagrey}Práctica final: ARCA}
+\fancyhead[R]{\footnotesize\color{arcagrey}Práctica: ARCA}
 \fancyfoot[C]{\footnotesize\color{arcagrey}\thepage\ de \pageref{LastPage}}
 
 \newcommand{\code}[1]{{\small\texttt{#1}}}
@@ -65,8 +65,8 @@
 \begin{document}
 
 \begin{center}
-  {\Large\bfseries\color{arcablue} ARCA: Agente con Razonamiento, Conocimiento y Acción}\\[0.5ex]
-  {\large Práctica final}\\[1.2ex]
+  {\Large\bfseries\color{arcablue} Práctica ARCA}\\[0.6ex]
+  {\large Agente con Razonamiento, Conocimiento y Acción}\\[1.2ex]
   {\small Modelos Generativos Profundos · Máster en Inteligencia Artificial · ICAI · Curso 2026-2027}\\[0.8ex]
   {\small Repositorio: \url{https://github.com/kendrickcetina/dgm-arca}}
 \end{center}
@@ -91,7 +91,7 @@ de programación competitiva. Lo que queráis, con una condición: que resuelva 
 alguien de verdad, aunque ese alguien seáis vosotros. Si al terminar podéis enseñar el
 repositorio en una entrevista de trabajo, habréis hecho bien el trabajo.
 
-Sé que vais a programar con ayuda de agentes de código, y no os lo voy a prohibir.
+Sabemos que vais a programar con ayuda de agentes de código, y no os lo vamos a prohibir.
 Precisamente por eso lo que puntúa no es escribir código, sino \textbf{decidir qué construir,
 saber si funciona y explicar por qué}. Un agente de código os escribe un bucle GRPO en dos
 minutos; lo que no puede hacer es elegir la tarea verificable de vuestro dominio, diseñar el
@@ -108,7 +108,7 @@ con sentido} en ese dominio: algo que consultar, algo que calcular, algo que hac
 \section{Equipos, ritmo y forma de trabajar}
 
 \textbf{Equipos de tres personas.} Repositorio compartido, un solo entregable por equipo, y
-en la defensa oral pregunto a cualquiera de los tres sobre cualquier parte del código.
+en la defensa oral preguntamos a cualquiera de los tres sobre cualquier parte del código.
 
 La práctica se construye \textbf{por capas, y se prueba desde el primer día}. No esperéis a
 tenerlo todo: cada fase termina en un endpoint que funciona por sí solo, así que podéis
@@ -120,7 +120,6 @@ levantar la API con la fase 1 hecha y las otras tres devolviendo «pendiente».
 \toprule
 \textbf{Fase} & \textbf{Carpeta} & \textbf{Endpoint} & \textbf{Cuándo} \\
 \midrule
-0. Propuesta      & \file{docs/}     & ---                & Primera semana, bloqueante \\
 1. Razonamiento   & \file{rlm/}      & \code{/reasoning}  & Empezamos el lunes 21 de septiembre \\
 2. Herramientas   & \file{tool\_use/}& \code{/tools}      & A continuación \\
 3. Conocimiento   & \file{rag/}      & \code{/rag}        & A continuación \\
@@ -136,22 +135,6 @@ fase 3. Pensad en el conjunto desde el principio.
 
 Las fechas exactas de cada entrega las fijamos en clase. Cada README de carpeta tiene el
 detalle completo; este documento es el resumen.
-
-\section{Fase 0: la propuesta}
-
-Antes de escribir código, una página por equipo. No es burocracia: es la parte que más
-determina vuestra nota, porque un tema bien elegido hace que todo lo demás fluya.
-
-Plantilla en \file{docs/00\_propuesta.md}. Quiero leer: el tema y el usuario; diez preguntas
-reales que ese usuario haría; \textbf{qué tarea es verificable y cómo la verificaríais};
-qué herramientas harían falta; de dónde sale el corpus; y qué puede salir mal.
-
-Si no tenéis tema, en \file{docs/temas\_ejemplo.md} hay trece desarrollados (farmacia, legal,
-finanzas, desarrollo, social, marketing, ciencia) con su tarea verificable, sus herramientas
-y su corpus. Son para inspirar, no para elegir de una lista.
-
-\textbf{Hasta que la propuesta esté aprobada, no empecéis la fase 1.} Cuando la apruebe os
-devolveré por escrito qué se evalúa exactamente en vuestro tema.
 
 \section{Fase 1: Razonamiento (\file{rlm/})}
 
@@ -220,8 +203,8 @@ y valida), \file{parser.py} (detecta \code{<tool\_call>}), \file{tools.py} (dos 
 de ejemplo), \file{evaluate.py} (métricas). Vuestros: vuestras herramientas en
 \file{tools.py}, \file{executor.py} y el banco en \file{bench/}.
 
-\textbf{En esta fase no se usa \code{smolagents}.} Quiero ver vuestro bucle. En la fase 4 sí
-lo permito, como contraste.
+\textbf{En esta fase no se usa \code{smolagents}.} Queremos ver vuestro bucle. En la fase 4 sí
+lo permitimos, como contraste.
 
 \section{Fase 3: Conocimiento (\file{rag/})}
 
@@ -284,8 +267,8 @@ Vuestros: \file{react\_agent.py}, la política de memoria y el banco en \file{be
 
 \section{Todo se prueba desde la API}
 
-\textbf{La corrección se hace llamando a vuestra API.} No leo vuestros notebooks para saber
-si funciona: lanzo peticiones. Por eso los contratos de entrada y salida están fijados en
+\textbf{La corrección se hace llamando a vuestra API.} No leemos vuestros notebooks para saber
+si funciona: lanzamos peticiones. Por eso los contratos de entrada y salida están fijados en
 \file{api/schemas.py}. Podéis añadir campos opcionales a las respuestas, pero no renombrar ni
 quitar los que ya están.
 
@@ -313,7 +296,7 @@ nada: una fase sin implementar responde \code{501} con su nombre y un mensaje, y
 \code{/health} os dice qué está listo. Así entregáis por capas y probáis cada fase en cuanto
 la terminéis.
 
-\textbf{Un ejemplo de lo que espero ver.}
+\textbf{Un ejemplo de lo que esperamos ver.}
 
 {\footnotesize
 \begin{verbatim}
@@ -333,10 +316,10 @@ $ curl -s -X POST localhost:8000/reasoning -H 'Content-Type: application/json' \
 \begin{nota}
 \textbf{Para la corrección.} La API tiene que levantar con \code{docker compose up api} en
 una máquina limpia. La exponéis con \href{https://ngrok.com/}{ngrok} (\code{ngrok http 8000})
-y me pasáis la URL. Antes de pasármela, probad los cuatro endpoints desde \code{/docs} y
+y nos pasáis la URL. Antes de pasárnosla, probad los cuatro endpoints desde \code{/docs} y
 comprobad que \code{/health} los marca como \code{ready}. Rellenad también \code{ARCA\_TEAM}
-y \code{ARCA\_DOMAIN} en vuestro \code{.env}: salen en \code{/health} y me dicen a quién
-estoy corrigiendo. Detalles en \file{api/README.md}.
+y \code{ARCA\_DOMAIN} en vuestro \code{.env}: salen en \code{/health} y nos dicen a quién
+estamos corrigiendo. Detalles en \file{api/README.md}.
 \end{nota}
 
 \needspace{14\baselineskip}
@@ -349,9 +332,9 @@ en la nota final.
 \small
 \begin{tabularx}{\textwidth}{@{}l c X@{}}
 \toprule
-\textbf{Criterio} & \textbf{Peso} & \textbf{Qué miro} \\
+\textbf{Criterio} & \textbf{Peso} & \textbf{Qué miramos} \\
 \midrule
-Implementación correcta & 30\,\% & El endpoint responde y hace lo que dice. Lo compruebo con
+Implementación correcta & 30\,\% & El endpoint responde y hace lo que dice. Lo comprobamos con
   un script que lanza peticiones, algunas parecidas a vuestros bancos de pruebas y otras que
   no habéis visto. \\
 Completitud & 30\,\% & Los mínimos de la fase están hechos. Cada pieza que falte resta. \\
@@ -364,7 +347,7 @@ Limpieza y calidad & 10\,\% & Sin marcadores pendientes. \code{uv sync} reproduc
 \end{tabularx}
 \end{center}
 
-La diferencia entre un trabajo correcto y uno excelente está en el tercer criterio. Quiero
+La diferencia entre un trabajo correcto y uno excelente está en el tercer criterio. Queremos
 que sepáis por qué vuestra recompensa es como es, qué hace el recorte en GRPO, por qué
 elegisteis ese $\lambda$ y qué pasó cuando le quitasteis el modelo de razonamiento al agente.
 Si el código lo escribió un agente y no sabéis explicarlo, se nota.
@@ -399,8 +382,11 @@ Cuando terminéis las cuatro fases tendréis un sistema completo. Tratadlo como 
   \item En la DGX: sesión de code-server desde \url{https://hpc.comillas.edu},
   \code{source smoke/dgx\_env.sh}, \code{uv run arca-check-gpu} y \code{uv run arca-smoke}.
   Guía completa, con la GPU de 16\,GB y las sesiones de 24 horas: \file{docs/dgx.md}.
-  \item Escribid la propuesta (\file{docs/00\_propuesta.md}) y empezad por la sección de la
-  tarea verificable. Si esa sección se escribe sola, tenéis tema.
+  \item Elegid tema y escribid la propuesta (\file{docs/00\_propuesta.md}), empezando por la
+  sección de la tarea verificable: si esa sección se escribe sola, tenéis tema. Si no se os
+  ocurre ninguno, en \file{docs/temas\_ejemplo.md} hay trece desarrollados (farmacia, legal,
+  finanzas, desarrollo, social, marketing y ciencia) con su tarea verificable, sus
+  herramientas y su corpus.
 \end{enumerate}
 
 \textbf{Un último consejo.} Empezad por el verificador y por el conjunto dorado, no por el
